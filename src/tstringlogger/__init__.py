@@ -61,7 +61,6 @@ class TLoggerMixin:
             # make getMessage just return the message
             record.getMessage = functools.partial(str, msg)
             record.args = (args, *record.args)
-        print(record.__dict__)
         return record
 
 
