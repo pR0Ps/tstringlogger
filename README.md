@@ -10,14 +10,18 @@ Adds support for using t-strings in log messages while preserving all interpolat
 
 Usage example:
 ```python
-from tstringlogger import get_logger
-
-__log__ = get_logger(__name__)
-
-test1, test2 = "A", "B"
-__log__.info(t"{test1=}, {test2}")
+>>> import logging
+>>> test1, test2 = "A", "B"
+>>>
+>>> logging.error(t"{test1=}, {test2}")
+ERROR:root:Template(strings=('test1=', ', ', ''), interpolations=(Interpolation...
+>>>
+>>> import tstringlogger  # automatically adds t-string support to stdlib logging
+>>>
+>>> logging.error(t"{test1=}, {test2}")
+ERROR:root:test1='A', B
 ```
 
-In this example the message "test1=A, B" will be displayed as expected. Additionally, the
-`LogRecord` that this call produced will have the data that was interpolated into the message
-available as `record.args[0]`. In this example the data would be `{"test1": "A", "test2": "B"}`
+In this example the `LogRecord` that was produced will have the data that was interpolated into the
+message available as `record.args`. In the above example the data would be:
+`{"test1": "A", "test2": "B"}`
