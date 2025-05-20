@@ -26,3 +26,7 @@ ERROR:root:test1='A', B
 In this example the `LogRecord` that was produced will have the data that was interpolated into the
 message available as `record.args`. In the above example the data would be:
 `{"test1": "A", "test2": "B"}`
+
+> [!NOTE]
+> The feature request to add this functionality to the standard library can be found here:
+> https://github.com/python/cpython/issues/134394
