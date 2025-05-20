@@ -16,7 +16,8 @@ Usage example:
 >>> logging.error(t"{test1=}, {test2}")
 ERROR:root:Template(strings=('test1=', ', ', ''), interpolations=(Interpolation...
 >>>
->>> import tstringlogger  # automatically adds t-string support to stdlib logging
+>>> import tstringlogger
+>>> tstringlogger.enable()  # automatically adds t-string support to stdlib logging
 >>>
 >>> logging.error(t"{test1=}, {test2}")
 ERROR:root:test1='A', B

@@ -43,5 +43,15 @@ def _patch_getMessage(func):
         return func(self)
     return wrapper
 
-LogRecord.__init__ = _patch_init(LogRecord.__init__)
-LogRecord.getMessage = _patch_getMessage(LogRecord.getMessage)
+
+_enabled = False
+
+def enable():
+    """Add support for t-strings to the stdlib logging library"""
+    global _enabled
+    if _enabled:
+        return
+
+    LogRecord.__init__ = _patch_init(LogRecord.__init__)
+    LogRecord.getMessage = _patch_getMessage(LogRecord.getMessage)
+    _enabled = True
